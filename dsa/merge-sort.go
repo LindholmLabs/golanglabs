@@ -36,35 +36,32 @@ func mergeSort(v []int) []int {
 func merge(v1 []int, v2 []int) []int {
 	var v3 []int
 
+	v1pos, v2pos := 0, 0 // keeps track of the current index at which the next element should be picked
+
 	// If both halves contain elements
-	for len(v1) > 0 && len(v2) > 0 {
+	for len(v1) > v1pos && len(v2) > v2pos {
 		if v1[0] < v2[0] {
-			v3 = append(v3, v1[0])
-			v1 = deleteElement(v1, 0)
+			v3 = append(v3, v1[v1pos])
+			v1pos++
 		} else {
-			v3 = append(v3, v2[0])
-			v2 = deleteElement(v2, 0)
+			v3 = append(v3, v2[v2pos])
+			v2pos++
 		}
 	}
 
 	// If right is empty
-	for len(v1) > 0 {
-		v3 = append(v3, v1[0])
-		v1 = deleteElement(v1, 0)
+	for len(v1) > v1pos {
+		v3 = append(v3, v1[v1pos])
+		v1pos++
 	}
 
 	// If left is empty
-	for len(v2) > 0 {
-		v3 = append(v3, v2[0])
-		v2 = deleteElement(v2, 0)
+	for len(v2) > v2pos {
+		v3 = append(v3, v2[v2pos])
+		v2pos++
 	}
 
 	return v3
-}
-
-// Delete an element at position and shift to right
-func deleteElement(slice []int, index int) []int {
-	return append(slice[:index], slice[index+1:]...)
 }
 
 // print an []int array
