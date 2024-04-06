@@ -1,19 +1,11 @@
-package main
+package dsa
 
 import (
-	"bytes"
-	"fmt"
 	"math"
 )
 
-func main() {
-	v := []int{9, 8, 6, 3, 1, 1, 11, 4}
-	printArr(v)
-	printArr(mergeSort(v))
-}
-
 // MergeSort O(n * log(n))
-func mergeSort(v []int) []int {
+func MergeSort(v []int) []int {
 
 	if len(v) == 1 {
 		return v
@@ -26,8 +18,8 @@ func mergeSort(v []int) []int {
 	v1 := v[q1:q2]
 	v2 := v[q2:q3]
 
-	v1 = mergeSort(v1)
-	v2 = mergeSort(v2)
+	v1 = MergeSort(v1)
+	v2 = MergeSort(v2)
 
 	return merge(v1, v2)
 }
@@ -62,22 +54,4 @@ func merge(v1 []int, v2 []int) []int {
 	}
 
 	return v3
-}
-
-// print an []int array
-func printArr(v []int) {
-
-	var buffer bytes.Buffer
-	buffer.WriteString("{")
-
-	for i, n := range v {
-		buffer.WriteString(fmt.Sprintf("%d", n))
-		if i < len(v)-1 {
-			buffer.WriteString(", ")
-		}
-	}
-
-	buffer.WriteString("}")
-
-	fmt.Println(buffer.String())
 }

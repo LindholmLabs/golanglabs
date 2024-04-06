@@ -1,0 +1,7 @@
+{
+    "/": "home.html",
+    "/home": "home.html",
+    "/about": "about.html",
+    "/home.css": "css/home.css",
+    "/about.css": "css/about.css"
+}
