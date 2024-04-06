@@ -12,7 +12,7 @@ func main() {
 }
 
 type Routes struct {
-	route string `json:"path"`
+	Route string `json:"path"`
 }
 
 func loadRoutes() {

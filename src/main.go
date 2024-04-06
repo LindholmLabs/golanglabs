@@ -8,8 +8,12 @@ import (
 )
 
 func main() {
-	slice := []int{1, 2, 3, 4}
-	dsa.MergeSort(slice)
+	slice := []int{9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
+	PrintArr(slice)
+	slice = dsa.MergeSort(slice)
+	PrintArr(slice)
+	slice = dsa.FisherYates(slice)
+	PrintArr(slice)
 }
 
 // print an []int array
