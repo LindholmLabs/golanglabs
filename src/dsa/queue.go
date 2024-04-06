@@ -1,20 +1,22 @@
 package dsa
 
 type Queue struct {
-	items []int
+	items []interface{}
 }
 
-func (q *Queue) Enqueue(item int) {
+func (q *Queue) Enqueue(item interface{}) {
 	q.items = append(q.items, item)
 }
 
-func (q *Queue) EnqueueSlice(items []int) {
-	q.items = append(q.items, items...)
+func (q *Queue) EnqueueSlice(items []interface{}) {
+	for _, item := range items {
+		q.Enqueue(item)
+	}
 }
 
-func (q *Queue) Dequeue() (item int, flag bool) {
+func (q *Queue) Dequeue() (item interface{}, flag bool) {
 	if q.IsEmpty() {
-		return -1, false
+		return nil, false
 	} else {
 		head := q.items[0]
 		q.items = q.items[1:]
