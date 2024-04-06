@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	v := []int{9, 8, 6, 3, 1, 0, 11, 4}
+	v := []int{9, 8, 6, 3, 1, 1, 11, 4}
 	printArr(v)
 	printArr(mergeSort(v))
 }
@@ -40,7 +40,7 @@ func merge(v1 []int, v2 []int) []int {
 
 	// If both halves contain elements
 	for len(v1) > v1pos && len(v2) > v2pos {
-		if v1[0] < v2[0] {
+		if v1[v1pos] < v2[v2pos] {
 			v3 = append(v3, v1[v1pos])
 			v1pos++
 		} else {
